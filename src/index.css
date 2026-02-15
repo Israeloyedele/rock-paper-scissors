@@ -40,11 +40,11 @@ body{
     background-color: white;
 }
 .score span:first-child{
-    font-size: 0.8em;
+    font-size: 1.2em;
     color: hsl(229, 64%, 46%);
 }
 .score span:last-child{
-    font-size: 3em;
+    font-size: 2.5em;
     color: hsl(229, 25%, 31%);
 }
 .display{

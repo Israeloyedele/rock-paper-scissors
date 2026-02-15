@@ -4,6 +4,7 @@ import { Modal } from './Modal.jsx'
 import { Display } from './Display.jsx'
 import { useEffect, useState } from "react"
 import { getScore, setLocalScore } from "../hooks/useLocalStorage.js";
+import {AnimatePresence} from "framer-motion";
 
 export function Game(){
     const [score, setScore] = useState(getScore("score", 0));
@@ -14,7 +15,7 @@ export function Game(){
         <div className="game">
             <Header score={score}/>
             <Display setScore={setScore}/>
-            {showRules && <Modal close={() => setShowRules(false)}/>}
+            <AnimatePresence>{showRules && (<Modal showRules={showRules} close={() => setShowRules(false)}/>)}</AnimatePresence>
             <Footer open={() => setShowRules(true)}/>
             <div className="attribution">
                 Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
