@@ -57,13 +57,22 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
-    cursor: pointer;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: space-around;
     padding-bottom: 30px;
     margin: 70px 0 40px 0;
     max-width: 450px;
+}
+.btn-display div{
+    cursor: pointer;
+}
+div.pick{
+    display: flex;
+    flex-direction: column;
+}
+div.pick p{
+    font-size: 1.2em;
 }
 div.circle{
     background-color: white;
@@ -93,13 +102,13 @@ div.circle{
     margin: 1.2em 0;
 }
 button.play-again{
-    color: hsl(229, 25%, 31%);
+    color: var(--buttonColor);
     padding: 10px 40px;
     border-radius: 10px;
     margin-top: 20px;
     font-size: 1.2em;
     letter-spacing: 2px;
-
+    cursor: pointer;
 }
 .winner{
     font-size: 3em;
@@ -154,6 +163,39 @@ button#rules, button.closeModal{
         border-radius: 10px;
         grid-template-areas: "rules close"
                              "image image";
+    }
+    div.pick{
+        flex-direction: column-reverse;
+    }
+    div.pick p{
+        font-size: 1.5em;
+    }
+    .result-container{
+
+    }
+    .result-display{
+        max-width: 800px;
+        display: grid;
+        gap: 70px;
+        grid-template-areas: "player win house";
+    }
+    div.pick.player{
+        grid-area: player;
+    }
+    div.pick.house{
+        grid-area: house;
+    }
+    .win{
+        grid-area: win;
+        display: grid;
+        place-items: center;
+        padding-top: 30px;
+    }
+    h1.winner{
+        align-self: flex-end;
+    }
+    button.play-again{
+        align-self: start;
     }
     button.closeModal{
         grid-area: close;
