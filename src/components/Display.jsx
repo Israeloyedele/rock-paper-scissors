@@ -3,6 +3,8 @@ import { useState } from "react";
 import iconpaper from "../assets/images/icon-paper.svg"
 import iconscissors from "../assets/images/icon-scissors.svg"
 import iconrock from "../assets/images/icon-rock.svg"
+import { COLORS } from "../utils/constants.js";
+import { Circle } from "./Circle.jsx";
 
 
 export function Display(props) {
@@ -11,6 +13,8 @@ export function Display(props) {
     const [houseIcon, setHouseIcon] = useState(null);
     const [winner, setWinner] = useState(null);
     const { setScore } = props;
+    const [playerColor, setPlayerColor] = useState(null);
+    const [houseColor, setHouseColor] = useState(null);
 
 
 
@@ -64,33 +68,39 @@ export function Display(props) {
     function handlePlayerPicked(value) {
 
         const house = housePick();
-
-        console.log(house, value);
-
         setPlayerIcon(setIcon(value)) ;
         setHouseIcon(setIcon(house)) ;
         checkWinner(house, value);
         setHasPlayerPicked(true);
+        setPlayerColor(COLORS[value]);
+        setHouseColor(COLORS[house]);
     }
 
     return (
         <div className="display">
             {!hasPlayerPicked ?
                 <div className="btn-display">
-                    <button onClick={() =>  handlePlayerPicked(PICK.ROCK)} className="pick"><img src={iconrock} alt=""/></button>
-                    <button onClick={() =>  handlePlayerPicked(PICK.PAPER)} className="pick"><img src={iconpaper} alt=""/></button>
-                    <button onClick={() =>  handlePlayerPicked(PICK.SCISSORS)} className="pick"><img src={iconscissors} alt=""/></button>
+                    <Circle pick={() =>  handlePlayerPicked(PICK.PAPER)} icon={iconpaper} color={COLORS.PAPER} />
+                    <Circle pick={() =>  handlePlayerPicked(PICK.SCISSORS)} icon={iconscissors} color={COLORS.SCISSORS} />
+                    <Circle pick={() =>  handlePlayerPicked(PICK.ROCK)} icon={iconrock} color={COLORS.ROCK} />
                 </div>
                 :
-                <div>
-                    <div><img src={playerIcon} alt=""/>
-                        <p>YOU PICKED</p>
+                <div className="result-container">
+                    <div className="result-display">
+                        <div>
+                            {/*<img src={playerIcon} alt=""/>*/}
+                            <Circle icon={playerIcon} color={playerColor} />
+                            <p>YOU PICKED</p>
+                        </div>
+
+                        <div>
+                            {/*<img src={houseIcon} alt=""/>*/}
+                            <Circle icon={houseIcon} color={houseColor} />
+                            <p>THE HOUSE PICKED</p>
+                        </div>
                     </div>
 
-                    <div><img src={houseIcon} alt=""/>
-                        <p>THE HOUSE PICKED</p>
-                    </div>
-                    <h1>{winner}</h1>
+                    <h1 className="winner">{winner}</h1>
                     <button onClick={() => setHasPlayerPicked(false)} className="play-again">Play Again</button>
                 </div>
             }

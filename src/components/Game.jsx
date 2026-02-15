@@ -15,10 +15,10 @@ export function Game(){
             <Header score={score}/>
             <Display setScore={setScore}/>
             {showRules && <Modal close={() => setShowRules(false)}/>}
-            <Footer showRules={showRules} open={() => setShowRules(true)}/>
+            <Footer open={() => setShowRules(true)}/>
             <div className="attribution">
                 Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-                Coded by <a href="#">Israel Oyedele</a>.
+                Built by <a href="https://github.com/Israeloyedele" target="_blank">Israel Oyedele</a>.
             </div>
         </div>
     )
