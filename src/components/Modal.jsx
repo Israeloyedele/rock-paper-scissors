@@ -1,9 +1,9 @@
 import rulesImg from "../assets/images/image-rules.svg"
 import closeImg from "../assets/images/icon-close.svg"
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export function Modal(props) {
-    const { showRules, close } = props;
+    const { close } = props;
     return (
 
 
@@ -19,10 +19,7 @@ export function Modal(props) {
                                 <h2>RULES</h2>
                                 <img src={rulesImg} alt=""/>
                                 <button onClick={close} className="closeModal"><img src={closeImg} alt=""/></button>
-                            </motion.div>
-
+                        </motion.div>
                 </motion.div>
-
-
     )
 }
