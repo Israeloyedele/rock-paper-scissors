@@ -54,8 +54,7 @@ export function Display(props) {
     }
 
     function checkWinner(house, player) {
-        console.log(buttonColor)
-        if (house === player) { setWinner("It's a Tie!")}
+        if (house === player) { setWinner("It's a Tie!"); setButtonColor("hsl(229, 25%, 31%)")}
         else if (
             player === PICK.ROCK  && house === PICK.SCISSORS ||
             player === PICK.PAPER && house === PICK.ROCK ||
@@ -64,14 +63,12 @@ export function Display(props) {
             setWinner("You Win!")
             setScore(prevScore => prevScore + 1)
             setButtonColor("hsl(229, 25%, 31%)")
-            console.log(buttonColor)
 
         }
 
         else {
             setWinner("You Lose!")
             setButtonColor("hsl(349, 71%, 52%)")
-            console.log(buttonColor)
 
         }
     }
