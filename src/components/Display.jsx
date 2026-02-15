@@ -85,19 +85,22 @@ export function Display(props) {
                     <Circle pick={() =>  handlePlayerPicked(PICK.ROCK)} icon={iconrock} color={COLORS.ROCK} />
                 </div>
                 :
-                <div className="result-display">
-                    <div>
-                        {/*<img src={playerIcon} alt=""/>*/}
-                        <Circle icon={playerIcon} color={playerColor} />
-                        <p>YOU PICKED</p>
+                <div className="result-container">
+                    <div className="result-display">
+                        <div>
+                            {/*<img src={playerIcon} alt=""/>*/}
+                            <Circle icon={playerIcon} color={playerColor} />
+                            <p>YOU PICKED</p>
+                        </div>
+
+                        <div>
+                            {/*<img src={houseIcon} alt=""/>*/}
+                            <Circle icon={houseIcon} color={houseColor} />
+                            <p>THE HOUSE PICKED</p>
+                        </div>
                     </div>
 
-                    <div>
-                        {/*<img src={houseIcon} alt=""/>*/}
-                        <Circle icon={houseIcon} color={houseColor} />
-                        <p>THE HOUSE PICKED</p>
-                    </div>
-                    <h1>{winner}</h1>
+                    <h1 className="winner">{winner}</h1>
                     <button onClick={() => setHasPlayerPicked(false)} className="play-again">Play Again</button>
                 </div>
             }

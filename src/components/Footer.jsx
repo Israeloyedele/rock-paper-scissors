@@ -1,10 +1,10 @@
 export function Footer(props) {
 
-    const { showRules, open } = props;
+    const {  open } = props;
 
     return (
-        <div>
-            {!showRules && <button id="rules" onClick={open}>Rules</button>}
+        <div className="footer">
+            <button id="rules" onClick={open}>Rules</button>
         </div>
     )
 }
