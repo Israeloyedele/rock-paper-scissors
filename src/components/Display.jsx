@@ -5,6 +5,8 @@ import iconscissors from "../assets/images/icon-scissors.svg"
 import iconrock from "../assets/images/icon-rock.svg"
 import { COLORS } from "../utils/constants.js";
 import { Circle } from "./Circle.jsx";
+import {easeInOut, motion} from "framer-motion"
+
 
 
 export function Display(props) {
@@ -80,9 +82,9 @@ export function Display(props) {
         <div className="display">
             {!hasPlayerPicked ?
                 <div className="btn-display">
-                    <Circle pick={() =>  handlePlayerPicked(PICK.PAPER)} icon={iconpaper} color={COLORS.PAPER} />
-                    <Circle pick={() =>  handlePlayerPicked(PICK.SCISSORS)} icon={iconscissors} color={COLORS.SCISSORS} />
-                    <Circle pick={() =>  handlePlayerPicked(PICK.ROCK)} icon={iconrock} color={COLORS.ROCK} />
+                    <Circle isButton={true} pick={() =>  handlePlayerPicked(PICK.PAPER)} icon={iconpaper} color={COLORS.PAPER} />
+                    <Circle isButton={true} pick={() =>  handlePlayerPicked(PICK.SCISSORS)} icon={iconscissors} color={COLORS.SCISSORS} />
+                    <Circle isButton={true} pick={() =>  handlePlayerPicked(PICK.ROCK)} icon={iconrock} color={COLORS.ROCK} />
                 </div>
                 :
                 <div className="result-container">
@@ -100,8 +102,14 @@ export function Display(props) {
                         </div>
                     </div>
 
-                    <h1 className="winner">{winner}</h1>
-                    <button onClick={() => setHasPlayerPicked(false)} className="play-again">Play Again</button>
+                    <motion.h1
+                        initial={{opacity: 0, scale: 0}}
+                        animate={{opacity: 1, scale: 1, transition: { duration: 0.5, ease: easeInOut }}}
+                        exit={{scale: 1}}
+                        className="winner">{winner}</motion.h1>
+                    <motion.button
+                        whileHover={{scale: 1.05}}
+                        onClick={() => setHasPlayerPicked(false)} className="play-again">Play Again</motion.button>
                 </div>
             }
 

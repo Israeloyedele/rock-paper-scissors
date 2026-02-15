@@ -1,12 +1,16 @@
-import {COLORS, PICK} from "../utils/constants.js";
+import { motion } from "framer-motion"
 
 export function Circle(props) {
-    const { color, icon, pick } = props;
+    const { isButton, color, icon, pick } = props;
 
     return (
-        <div onClick={pick} className="circle"
+        <motion.div
+            initial={!isButton && {opacity: 0, scale: 0}}
+            whileHover={isButton && {scale: 1.1, transition: {duration: 0.3}}}
+            animate={!isButton && {opacity: 1, scale: 1.1, transition: {duration: 0.5}}}
+            onClick={pick} className="circle"
              style={{ "--circle-color": color }}>
             <img src={icon} alt=""  />
-        </div>
+        </motion.div>
     )
 }
