@@ -5,7 +5,7 @@ import iconscissors from "../assets/images/icon-scissors.svg"
 import iconrock from "../assets/images/icon-rock.svg"
 import { COLORS } from "../utils/constants.js";
 import { Circle } from "./Circle.jsx";
-import {easeInOut, motion} from "framer-motion"
+import { easeInOut, motion} from "framer-motion"
 
 
 
@@ -17,6 +17,7 @@ export function Display(props) {
     const { setScore } = props;
     const [playerColor, setPlayerColor] = useState(null);
     const [houseColor, setHouseColor] = useState(null);
+    const [buttonColor, setButtonColor] = useState("hsl(229, 25%, 31%)");
 
 
 
@@ -53,6 +54,7 @@ export function Display(props) {
     }
 
     function checkWinner(house, player) {
+        console.log(buttonColor)
         if (house === player) { setWinner("It's a Tie!")}
         else if (
             player === PICK.ROCK  && house === PICK.SCISSORS ||
@@ -61,10 +63,17 @@ export function Display(props) {
         ){
             setWinner("You Win!")
             setScore(prevScore => prevScore + 1)
+            setButtonColor("hsl(229, 25%, 31%)")
+            console.log(buttonColor)
 
         }
 
-        else setWinner("You Lose!");
+        else {
+            setWinner("You Lose!")
+            setButtonColor("hsl(349, 71%, 52%)")
+            console.log(buttonColor)
+
+        }
     }
 
     function handlePlayerPicked(value) {
@@ -89,27 +98,31 @@ export function Display(props) {
                 :
                 <div className="result-container">
                     <div className="result-display">
-                        <div>
+                        <div className="pick player">
                             {/*<img src={playerIcon} alt=""/>*/}
                             <Circle icon={playerIcon} color={playerColor} />
                             <p>YOU PICKED</p>
                         </div>
 
-                        <div>
+                        <div className="pick house">
                             {/*<img src={houseIcon} alt=""/>*/}
                             <Circle icon={houseIcon} color={houseColor} />
                             <p>THE HOUSE PICKED</p>
                         </div>
-                    </div>
 
-                    <motion.h1
-                        initial={{opacity: 0, scale: 0}}
-                        animate={{opacity: 1, scale: 1, transition: { duration: 0.5, ease: easeInOut }}}
-                        exit={{scale: 1}}
-                        className="winner">{winner}</motion.h1>
-                    <motion.button
-                        whileHover={{scale: 1.05}}
-                        onClick={() => setHasPlayerPicked(false)} className="play-again">Play Again</motion.button>
+                    <div className="win">
+                        <motion.h1
+                            initial={{opacity: 0, scale: 0}}
+                            animate={{opacity: 1, scale: 1, transition: { duration: 0.5, ease: easeInOut }}}
+                            exit={{scale: 1}}
+                            className="winner">{winner}</motion.h1>
+                        <motion.button
+                            whileHover={{scale: 1.05}}
+                            onClick={() => setHasPlayerPicked(false)}
+                            style={{ "--buttonColor": buttonColor}}
+                            className="play-again">Play Again</motion.button>
+                    </div>
+                    </div>
                 </div>
             }
 
