@@ -17,13 +17,18 @@ body{
     justify-content: center;
     align-items: center;
 }
+.header-wrapper{
+    width: calc(100% - 20px);
+    display: grid;
+    place-items: center;
+}
 .header{
     display: flex;
     justify-content: space-between;
     padding: 15px;
     border: 3px solid hsl(246, 11%, 37%);
     border-radius: 10px;
-    width: calc(100% - 40px);
+    width: 100%;
     max-width: 500px;
     justify-self: auto;
 }
@@ -47,13 +52,18 @@ body{
     font-size: 2.5em;
     color: hsl(229, 25%, 31%);
 }
+p.outcome{
+    color: white;
+    font-size: 1.5em;
+    padding: 10px;
+}
 .display{
     /*border: 1px solid red;*/
     display: grid;
     place-items: center;
 }
 .btn-display{
-    background-image: url("./assets/images/bg-triangle.svg");
+    /*background-image: url(--bg-img);*/
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
@@ -113,12 +123,12 @@ button.play-again{
 .winner{
     font-size: 3em;
 }
-button#rules, button.closeModal{
+button#rules, button.closeModal, button.mode, button.reset{
     background-color: inherit;
     color: hsl(0, 0%, 100%);
     border: 2px solid hsl(0, 0%, 100%, 0.7);
     border-radius: 10px;
-    padding: 8px 40px;
+    padding: 8px 15px;
     font-weight: bold;
     font-size: 1.05em;
     letter-spacing: 2px;
@@ -149,7 +159,16 @@ button#rules, button.closeModal{
     font-size: 10px;
     text-transform: capitalize;
 }
+.footer{
+    display: flex;
+    justify-content: space-around;
+    min-width: 350px;
+
+}
 @media(min-width: 600px){
+    p.outcome{
+        font-size: 2em;
+    }
 
     .modal{
         display: grid;
@@ -210,6 +229,6 @@ button#rules, button.closeModal{
         justify-self: flex-start;
     }
     .footer{
-        align-self: flex-end;
+        /*align-self: flex-end;*/
     }
 }
