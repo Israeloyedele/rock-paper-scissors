@@ -63,20 +63,55 @@ p.outcome{
     place-items: center;
 }
 .btn-display{
-    /*background-image: url(--bg-img);*/
+    background-image: url("./assets/images/bg-triangle.svg");
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
+    /*display: grid;*/
     gap: 20px;
     flex-wrap: wrap;
     justify-content: space-around;
     padding-bottom: 30px;
-    margin: 70px 0 40px 0;
+    margin: 50px 0 40px 0;
     max-width: 450px;
 }
-.btn-display div{
-    cursor: pointer;
+.btn-display.advanced{
+    display: grid;
+    grid-template-areas:
+            "scissors scissors"
+            "spock paper"
+            "lizard rock";
+    background-image: url("./assets/images/bg-pentagon.svg");
+    background-repeat: no-repeat;
+    justify-items: center;
+    min-width: 400px;
 }
+.paper{
+    grid-area: paper;
+    margin: 0 0 0 2.5em;
+}
+.rock{
+    grid-area: rock;
+    margin: 1em 1.5em 0 0;
+}
+.spock{
+    grid-area: spock;
+    margin: 0 2.5em 0 0;
+}
+.lizard{
+    grid-area: lizard;
+    margin: 1em 0 0 1.5em;
+
+
+}
+.scissors{
+    grid-area: scissors;
+}
+.btn-display.advanced div{
+    width: 80px;
+    height: 80px;
+}
+
 div.pick{
     display: flex;
     flex-direction: column;
@@ -89,9 +124,10 @@ div.circle{
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    border: 15px solid var(--circle-color);
+    border: 15px solid var( --circle-color);
     display: grid;
     place-items: center;
+    cursor: pointer;
 
 }
 .result-container{
@@ -169,7 +205,6 @@ button#rules, button.closeModal, button.mode, button.reset{
     p.outcome{
         font-size: 2em;
     }
-
     .modal{
         display: grid;
         place-items: center;
@@ -188,9 +223,6 @@ button#rules, button.closeModal, button.mode, button.reset{
     }
     div.pick p{
         font-size: 1.5em;
-    }
-    .result-container{
-
     }
     .result-display{
         max-width: 800px;
@@ -228,7 +260,5 @@ button#rules, button.closeModal, button.mode, button.reset{
     .modal-content h2{
         justify-self: flex-start;
     }
-    .footer{
-        /*align-self: flex-end;*/
-    }
+
 }
