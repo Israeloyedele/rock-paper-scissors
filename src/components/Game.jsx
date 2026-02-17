@@ -13,13 +13,17 @@ export function Game(){
     useEffect(() => { setLocalScore("score", score)}, [score])
     const [gameMode, setGameMode] = useState(GAME_MODE.BASIC);
     const [outcome, setOutcome] = useState("");
+    const [hasPlayerPicked, setHasPlayerPicked] = useState(false);
+    const [mount, setMount] = useState(true);
+
+
 
     return (
         <div className="game">
             <Header outcome={outcome} gameMode={gameMode} score={score}/>
-            <Display setOutcome={setOutcome} gameMode={gameMode} setScore={setScore}/>
+            <Display hasPlayerPicked={hasPlayerPicked} setHasPlayerPicked={setHasPlayerPicked} setOutcome={setOutcome} gameMode={gameMode} setScore={setScore} mount={mount} setMount={setMount} />
             <AnimatePresence>{showRules && (<Modal gameMode={gameMode} showRules={showRules} close={() => setShowRules(false)}/>)}</AnimatePresence>
-            <Footer resetScore={() => setScore(0)} changeMode={() => setGameMode(!gameMode)} gameMode={gameMode} open={() => setShowRules(true)}/>
+            <Footer hasPlayerPicked={hasPlayerPicked} setMount={setMount} mount={mount} setOutcome={setOutcome} setHasPlayerPicked={setHasPlayerPicked} resetScore={() => setScore(0)} changeMode={() => setGameMode(!gameMode)} gameMode={gameMode} open={() => setShowRules(true)}/>
             <div className="attribution">
                 Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
                 Built by <a href="https://github.com/Israeloyedele" target="_blank">Israel Oyedele</a>.
