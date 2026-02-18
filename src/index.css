@@ -43,6 +43,7 @@ body{
     border-radius: 8px;
     padding: 10px 20px;
     background-color: white;
+    justify-content: center;
 }
 .score span:first-child{
     font-size: 1.2em;

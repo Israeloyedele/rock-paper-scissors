@@ -8,7 +8,7 @@ import iconLizard from "../assets/images/icon-lizard.svg"
 
 import { WINNER, COLORS, housePick, getResult } from "../utils/constants.js";
 import { Circle } from "./Circle.jsx";
-import { easeInOut, motion} from "framer-motion"
+import {easeInOut, motion } from "framer-motion"
 
 
 
@@ -16,7 +16,7 @@ export function Display(props) {
     const [playerIcon, setPlayerIcon] = useState(null);
     const [houseIcon, setHouseIcon] = useState(null);
     const [resultText, setResultText] = useState(null);
-    const { gameMode, setScore, setOutcome, hasPlayerPicked, setHasPlayerPicked, mount, setMount } = props;
+    const { gameMode, setScore, setOutcome, hasPlayerPicked, setHasPlayerPicked } = props;
     const [playerColor, setPlayerColor] = useState(null);
     const [houseColor, setHouseColor] = useState(null);
     const [buttonColor, setButtonColor] = useState("hsl(229, 25%, 31%)");
@@ -52,15 +52,14 @@ export function Display(props) {
         setHasPlayerPicked(true);
         setPlayerColor(COLORS[value]);
         setHouseColor(COLORS[house]);
-        setMount(false);
     }
 
     return (
         <div className="display">
-            {!hasPlayerPicked && mount ?
+            {!hasPlayerPicked ?
                 <motion.div
                     initial={{opacity: 0, scale: 0, y: 100}}
-                    animate={{opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: easeInOut }}}
+                    animate={{opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: easeInOut }} }
                     className= {`btn-display ${gameMode? '' : 'advanced'}`}>
                     <Circle className={gameMode? "" : "paper"} isButton={true} pick={() =>  handlePlayerPicked(PICK.PAPER)} icon={iconPaper} color={COLORS.PAPER} />
                     <Circle className={gameMode? "" :"scissors"} isButton={true} pick={() =>  handlePlayerPicked(PICK.SCISSORS)} icon={iconScissors} color={COLORS.SCISSORS} />
@@ -92,7 +91,7 @@ export function Display(props) {
                             className="winner">{resultText}</motion.h1>
                         <motion.button
                             whileHover={{scale: 1.05}}
-                            onClick={() => { setMount(!mount); setHasPlayerPicked(false); setOutcome("") }}
+                            onClick={() => { setHasPlayerPicked(false); setOutcome("") }}
                             style={{ "--buttonColor": buttonColor}}
                             className="play-again" >Play Again</motion.button>
                     </div>
