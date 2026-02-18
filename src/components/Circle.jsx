@@ -5,9 +5,9 @@ export function Circle(props) {
 
     return (
         <motion.div
-            initial={!isButton && {opacity: 0, scale: 0}}
-            whileHover={isButton && {scale: 1.1, transition: {duration: 0.3}}}
-            animate={!isButton && {opacity: 1, scale: 1.1, transition: {duration: 0.5}}}
+            initial={{opacity: 0, scale: 0, y:-50}}
+            whileHover={isButton && {scale: 1,rotate:  "25deg", y: -10, transition: {duration: 0.2}}}
+            animate={{opacity: 1, scale: 1, y:0, transition: {duration: 0.2}}}
             onClick={pick}
             className={`circle ${className}`}
             style={{ "--circle-color": color }}>
